@@ -4,9 +4,9 @@ A web-based cryptocurrency system with client and miner nodes that communicate t
 
 ## Features
 
-- Blockchain implementation with proof-of-work
+- Blockchain implementation with proof-of-work consensus
 - Transaction creation and verification with cryptographic signatures
-- Block mining with rewards
+- Block mining with rewards (50 coins per block)
 - Peer-to-peer networking via TCP sockets
 - Balance tracking for addresses
 - Web interface for interaction
@@ -25,7 +25,7 @@ A web-based cryptocurrency system with client and miner nodes that communicate t
 2. Install dependencies:
 
 ```bash
-npm install express body-parser cors
+npm install
 ```
 
 Note: If you encounter a security error when running npm commands on Windows PowerShell, you may need to adjust your execution policy. There are several options:
@@ -45,7 +45,7 @@ Option 3: Use Visual Studio Code's built-in terminal, which typically doesn't ha
 node keygen.js
 ```
 
-This will create 5 sample key pairs in the `samples` directory that you can use for testing.
+This will create sample key pairs in the `samples` directory that you can use for testing.
 
 ### Running the Application
 
@@ -60,21 +60,38 @@ This will start a node on port 3000 by default with the web interface accessible
 To start a node with a specific configuration:
 
 ```bash
-node server.js --config ./samples/minnie.json
+node server.js --config ./samples/hesham.json
+```
+
+Or use the npm scripts:
+
+```bash
+npm run start:minnie   # Starts a node with minnie.json config
 ```
 
 ### Starting Multiple Nodes
 
 To test the peer-to-peer functionality, you can start multiple nodes on different ports. You'll need to open separate terminal windows for each node.
 
-Terminal 1 (Minnie - port 3000):
+We have 6 sample users already configured:
+
+1. Hesham (Web Port: 3000, P2P Port: 4000)
+2. Mohamed (Web Port: 3001, P2P Port: 4001)
+3. Mostafa (Web Port: 3002, P2P Port: 4002)
+4. Mahmoud (Web Port: 3003, P2P Port: 4003)
+5. Mina (Web Port: 3004, P2P Port: 4004)
+6. Abdulrahman (Web Port: 3005, P2P Port: 4005)
+
+Example for starting two nodes:
+
+Terminal 1 (Hesham - port 3000):
 ```bash
-node server.js --config ./samples/minnie.json
+node server.js --config ./samples/hesham.json
 ```
 
-Terminal 2 (Mickey - port 3001):
+Terminal 2 (Mohamed - port 3001):
 ```bash
-node server.js --config ./samples/mickey.json
+node server.js --config ./samples/mohamed.json
 ```
 
 You can then connect these nodes to each other through the web interface.
@@ -82,17 +99,27 @@ You can then connect these nodes to each other through the web interface.
 ## Using the Web Interface
 
 1. Open your browser and navigate to:
-   - http://localhost:3000 (for the first node)
-   - http://localhost:3001 (for the second node, if started)
+   - http://localhost:3000 (for Hesham's node)
+   - http://localhost:3001 (for Mohamed's node)
+   - etc.
 
-2. Login by uploading one of the sample config files from the `samples` directory.
-
-3. Once logged in, you can:
+2. Once logged in, you can:
    - View your balance
    - Send transactions to other addresses
-   - Mine blocks to earn rewards
+   - Mine blocks to earn rewards (50 coins)
    - Connect to other nodes
    - View pending transactions and all account balances
+
+## Connecting Nodes Together
+
+For the nodes to communicate with each other, they need to be connected:
+
+1. Open a user's web interface (e.g., http://localhost:3000 for Hesham)
+2. Go to the "Network" section
+3. Enter the host (`localhost`) and the P2P port of another user (e.g., 4001 for Mohamed)
+4. Click "Connect to Peer"
+
+It's recommended to connect all nodes to at least one other node to form a network.
 
 ## API Endpoints
 
@@ -108,20 +135,27 @@ The server exposes the following REST API endpoints:
 - `POST /connect` - Connect to another peer
 - `POST /login` - Login with a key pair
 
-## Sample Files
+## Making Transactions
 
-The application includes 5 sample key pairs:
+To send cryptocurrency from one user to another:
 
-- `samples/minnie.json` - Pre-configured for port 3000
-- `samples/mickey.json` - Pre-configured for port 3001
-- `samples/user3.json`, `samples/user4.json`, `samples/user5.json` - Additional users for testing
+1. Open the sender's web interface
+2. Find the "Send Transaction" section
+3. Enter the recipient's public key
+4. Enter the amount to send
+5. Click "Send"
 
-## How It Works
+The transaction will be created and added to the pending transactions list.
 
-1. **Blockchain**: The core blockchain implementation with blocks, transactions, and consensus.
-2. **P2P Network**: Nodes communicate via TCP sockets to broadcast transactions and blocks.
-3. **Web Interface**: Users interact with the system through a web interface built with HTML, JavaScript, and Tailwind CSS.
-4. **Authentication**: Users upload their key configuration files, which include public and private keys for signing transactions.
+## Mining Blocks
+
+Transactions are only confirmed when they are included in a mined block:
+
+1. Open any user's web interface
+2. Click "Mine Block" button
+3. This will mine a new block with any pending transactions
+4. When successful, the miner receives a reward (50 coins)
+5. All connected nodes will receive the updated blockchain
 
 ## Troubleshooting
 
@@ -129,7 +163,7 @@ The application includes 5 sample key pairs:
 If you see errors like `Cannot find module 'express'`, make sure to install dependencies:
 
 ```bash
-npm install express body-parser cors
+npm install
 ```
 
 ### Port Already in Use
@@ -139,8 +173,13 @@ If you see errors about ports already being in use, you can either:
 2. Change the port using an environment variable:
 
 ```bash
-PORT=3002 node server.js
+PORT=3006 node server.js
 ```
+
+### Connection Errors
+- Ensure the target node is running
+- Double-check the host and port values
+- Try reconnecting
 
 ## Security Notes
 
