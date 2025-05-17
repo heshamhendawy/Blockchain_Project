@@ -64,7 +64,10 @@ To start a node with a specific configuration:
 ```bash
 node server.js --config ./samples/hesham.json
 ```
-
+### Check the LinkedIn post that includes a video showing how it works:
+```
+https://www.linkedin.com/posts/hesham-hendawy-8a57b4229_blockchain-rsa-cryptography-activity-7329572568925999106-qFIQ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADk_vv0BKP_qf5ZFDaFKSGNcNi4VAeEEBTw
+```
 ### Starting Multiple Nodes
 
 To test the peer-to-peer functionality, you can start multiple nodes on different ports. You'll need to open separate terminal windows for each node.
