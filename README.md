@@ -63,12 +63,6 @@ To start a node with a specific configuration:
 node server.js --config ./samples/hesham.json
 ```
 
-Or use the npm scripts:
-
-```bash
-npm run start:minnie   # Starts a node with minnie.json config
-```
-
 ### Starting Multiple Nodes
 
 To test the peer-to-peer functionality, you can start multiple nodes on different ports. You'll need to open separate terminal windows for each node.
