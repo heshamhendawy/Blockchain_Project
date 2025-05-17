@@ -12,7 +12,8 @@ A web-based cryptocurrency system with client and miner nodes that communicate t
 - Web interface for interaction
 - Real-time transaction and balance updates
 
-#For more specific details, you can check ##Blockchain_Report.pdf imported above in this repository.
+###For more specific details, you can check Blockchain_Report.pdf imported above in this repository.
+
 ## Getting Started
 
 ### Prerequisites
