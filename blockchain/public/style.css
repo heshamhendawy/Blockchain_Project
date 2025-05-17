@@ -1,0 +1,959 @@
+/* Custom styles beyond Tailwind */
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #b8c2cc;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+/* Public key display */
+#user-address {
+    word-break: break-all;
+    max-height: 80px;
+    overflow-y: auto;
+}
+
+/* Transaction animations */
+.explorer-content .bg-gray-100 {
+    transition: all 0.3s ease;
+}
+
+.explorer-content .bg-gray-100:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover effects */
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Form input focus */
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+}
+
+/* Tab transitions */
+.explorer-tab {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.explorer-tab:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.explorer-content {
+    padding: 1rem 0;
+}
+
+/* Notifications */
+#transaction-result,
+#mining-result,
+#connect-result {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+#transaction-result.hidden,
+#mining-result.hidden,
+#connect-result.hidden {
+    opacity: 0;
+}
+
+/* Additional styles for the cryptocurrency app */
+
+/* Status colors */
+.bg-success {
+    background-color: var(--success-light);
+    border-color: var(--success);
+    color: var(--success-dark);
+}
+
+.bg-error {
+    background-color: var(--error-light);
+    border-color: var(--error);
+    color: var(--error-dark);
+}
+
+.bg-warning {
+    background-color: var(--warning-light);
+    border-color: var(--warning);
+    color: var(--warning-dark);
+}
+
+.bg-info {
+    background-color: var(--info-light);
+    border-color: var(--info);
+    color: var(--info-dark);
+}
+
+/* Transaction styling */
+.transaction-item {
+    border-left: 4px solid transparent;
+    transition: all 0.2s;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    color: #f5f5dc;
+}
+
+.transaction-pending {
+    border-left-color: var(--warning);
+}
+
+.transaction-sent {
+    border-left-color: var(--error);
+}
+
+.transaction-received {
+    border-left-color: var(--success);
+}
+
+/* New transaction highlight animation */
+.transaction-new {
+    animation: pulseHighlight 2s ease-in-out infinite;
+    border: 1px solid #4f46e5;
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.transaction-new::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(79, 70, 229, 0) 0%,
+        rgba(79, 70, 229, 0.1) 50%,
+        rgba(79, 70, 229, 0) 100%
+    );
+    animation: shimmer 1.5s infinite;
+    transform: translateX(-100%);
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes pulseHighlight {
+    0% {
+        box-shadow: 0 0 5px rgba(79, 70, 229, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(79, 70, 229, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(79, 70, 229, 0.3);
+    }
+}
+
+/* Animation for mining */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(249, 168, 37, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(249, 168, 37, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(249, 168, 37, 0);
+    }
+}
+
+.mining-animation {
+    animation: pulse 1.5s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .explorer-tab {
+        font-size: 0.875rem;
+        padding: 0.5rem;
+    }
+    
+    .explorer-tab:not(:first-child) {
+        margin-left: 0.5rem;
+    }
+}
+
+/* Loading spinner */
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Modern Cryptocurrency UI Styles */
+
+:root {
+    /* Primary colors */
+    --primary: #4f46e5;
+    --primary-light: #6366f1;
+    --primary-dark: #4338ca;
+    
+    /* Secondary colors */
+    --secondary: #10b981;
+    --secondary-light: #34d399;
+    --secondary-dark: #059669;
+    
+    /* Accent colors */
+    --accent: #f59e0b;
+    --accent-light: #fbbf24;
+    --accent-dark: #d97706;
+    
+    /* Status colors */
+    --success: #10b981;
+    --success-light: #d1fae5;
+    --success-dark: #065f46;
+    
+    --error: #ef4444;
+    --error-light: #fee2e2;
+    --error-dark: #b91c1c;
+    
+    --warning: #f59e0b;
+    --warning-light: #fef3c7;
+    --warning-dark: #b45309;
+    
+    --info: #3b82f6;
+    --info-light: #dbeafe;
+    --info-dark: #1e40af;
+    
+    /* Neutral colors */
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+    
+    /* UI elements */
+    --card-bg: white;
+    --text: var(--gray-800);
+    --text-light: var(--gray-500);
+    --border: var(--gray-200);
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 12px;
+}
+
+/* Dark Mode Variables */
+.dark-mode {
+    --primary: #818cf8;
+    --primary-light: #a5b4fc;
+    --primary-dark: #6366f1;
+    
+    --secondary: #34d399;
+    --secondary-light: #6ee7b7;
+    --secondary-dark: #10b981;
+    
+    --accent: #fbbf24;
+    --accent-light: #fcd34d;
+    --accent-dark: #f59e0b;
+    
+    --success: #34d399;
+    --success-light: #064e3b;
+    --success-dark: #6ee7b7;
+    
+    --error: #f87171;
+    --error-light: #7f1d1d;
+    --error-dark: #fecaca;
+    
+    --warning: #fbbf24;
+    --warning-light: #78350f;
+    --warning-dark: #fcd34d;
+    
+    --info: #60a5fa;
+    --info-light: #1e3a8a;
+    --info-dark: #bfdbfe;
+    
+    --dark: #0f172a;
+    --light: #1e293b;
+    --card-bg: var(--gray-800);
+    --text: var(--gray-100);
+    --text-light: var(--gray-400);
+    --border: var(--gray-700);
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text);
+    background: linear-gradient(to bottom right, var(--light), #dbeafe);
+    transition: var(--transition);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body.dark-mode {
+    background: linear-gradient(to bottom right, var(--dark), #1e1b4b);
+}
+
+/* Glassmorphism for cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: var(--shadow);
+}
+
+.dark-mode .glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(30, 41, 59, 0.3);
+}
+
+/* Modern Header */
+header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+    animation: rotate 20s linear infinite;
+    z-index: 0;
+}
+
+.dark-mode header {
+    background: linear-gradient(135deg, var(--primary-dark), #2e1065);
+}
+
+header > div {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animated button effect */
+.btn {
+    position: relative;
+    transition: var(--transition);
+    overflow: hidden;
+    transform-origin: center;
+    z-index: 1;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0px);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Primary button */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+}
+
+/* Gradient buttons */
+.btn-secondary {
+    background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+    color: white;
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--error), var(--error-dark));
+    color: white;
+}
+
+/* Modern form inputs */
+.form-input {
+    background: var(--gray-100);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: var(--transition);
+    width: 100%;
+    color: var(--text);
+}
+
+.dark-mode .form-input {
+    background: var(--gray-800);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.form-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-light);
+    background: white;
+}
+
+.dark-mode .form-input:focus {
+    background: var(--gray-800);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+    color: var(--text);
+}
+
+/* Toggle Switch */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: var(--primary);
+}
+
+input:focus + .toggle-slider {
+    box-shadow: 0 0 1px var(--primary);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    overflow: hidden;
+    background: var(--card-bg);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Card Headers */
+.card-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.dark-mode .card-header {
+    border-bottom: 1px solid rgba(30, 41, 59, 0.6);
+}
+
+/* Animations */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(79, 70, 229, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(79, 70, 229, 0);
+    }
+}
+
+.mining-animation {
+    animation: pulse 1.5s infinite;
+}
+
+/* Transaction list */
+.transaction-item {
+    position: relative;
+    border-radius: var(--radius);
+    transition: var(--transition);
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.transaction-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.transaction-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+
+.transaction-pending::before {
+    background: var(--warning);
+}
+
+.transaction-confirmed::before {
+    background: var(--secondary);
+}
+
+.transaction-sent::before {
+    background: var(--error);
+}
+
+.transaction-received::before {
+    background: var(--success);
+}
+
+/* Notification Toast */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 9999;
+    max-width: 350px;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-success {
+    background: var(--secondary);
+    color: white;
+}
+
+.toast-error {
+    background: var(--error);
+    color: white;
+}
+
+.toast-info {
+    background: var(--primary);
+    color: white;
+}
+
+/* Loading Spinner */
+.spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Blockchain animation */
+.blockchain-animation {
+    position: relative;
+    height: 60px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blockchain-animation .block {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    border-radius: 8px;
+    margin: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.2s);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.blockchain-animation .block::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background: var(--primary-light);
+    right: -15px;
+}
+
+.blockchain-animation .block:last-child::after {
+    display: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Balance display */
+.balance-display {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+/* Responsive tables */
+.responsive-table {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0;
+    border-radius: var(--radius);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .form-input {
+        padding: 10px 12px;
+    }
+    
+    .dashboard-card {
+        margin-bottom: 16px;
+    }
+}
+
+/* Add these animations for transaction notifications */
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+/* Pulsing animation for network status */
+@keyframes ping {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    75%, 100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+.ping {
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* New transaction banner */
+.transaction-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    color: white;
+    padding: 12px;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-banner.show {
+    transform: translateY(0);
+    animation: bannerPulse 2s infinite;
+}
+
+@keyframes bannerPulse {
+    0%, 100% {
+        background: linear-gradient(90deg, var(--secondary), var(--primary));
+    }
+    50% {
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+}
+
+/* Enhanced toast animations */
+.toast {
+    animation: slideInRight 0.5s forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.toast.hide {
+    animation: slideOutRight 0.5s forwards;
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Custom notification popup */
+.notification-popup {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px;
+    max-width: 300px;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    transform: translateX(120%);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.notification-popup.show {
+    transform: translateX(0);
+}
+
+.dark-mode .notification-popup {
+    background: var(--dark);
+    color: var(--text);
+}
+
+/* Real-time indicator */
+.realtime-indicator {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    color: var(--secondary);
+    margin-left: 8px;
+}
+
+.realtime-indicator::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--secondary);
+    margin-right: 4px;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Enhanced balance animation */
+.balance-change {
+    animation: highlightBalance 2s;
+}
+
+@keyframes highlightBalance {
+    0% { 
+        color: var(--primary);
+        transform: scale(1);
+    }
+    50% {
+        color: var(--secondary);
+        transform: scale(1.1);
+    }
+    100% { 
+        color: inherit;
+        transform: scale(1);
+    }
+}
+
+/* Extra emphasis for significant balance increases */
+.balance-significant {
+    animation: significantBalance 2.5s ease-in-out;
+}
+
+@keyframes significantBalance {
+    0% { 
+        color: var(--primary);
+        transform: scale(1);
+        text-shadow: none;
+    }
+    25% {
+        color: #f59e0b;
+        transform: scale(1.15);
+        text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    }
+    50% {
+        color: var(--secondary);
+        transform: scale(1.2);
+        text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+    }
+    75% {
+        color: #059669;
+        transform: scale(1.15);
+        text-shadow: 0 0 10px rgba(5, 150, 105, 0.5);
+    }
+    100% { 
+        color: inherit;
+        transform: scale(1);
+        text-shadow: none;
+    }
+}
+
+.bg-blue-50,
+.dark\:bg-blue-900 {
+    color: #f5f5dc !important;
+}
+
+thead th {
+    color: #f5f5dc !important;
+}
+
+.dark-mode #user-address {
+    background: #444a57 !important;
+    color: #f5f5dc;
+}
+
+/* Make unselected balance rows gray */
+.responsive-table tr:not(.bg-blue-50):not(:first-child) {
+    background: #f3f4f6;
+}
+.dark-mode .responsive-table tr:not(.bg-blue-50):not(:first-child) {
+    background: #374151;
+    color: #f5f5dc;
+}
